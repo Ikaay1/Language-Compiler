@@ -1,0 +1,134 @@
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % cat test/add1.snek                  
+(add1 7)%                                                                                                   
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % make test/add1.run
+cargo run -- test/add1.snek test/add1.s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/adder test/add1.snek test/add1.s`
+nasm -f macho64 test/add1.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc --target x86_64-apple-darwin -L runtime/ runtime/start.rs -o test/add1.run
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % cat test/add1.s   
+
+section .text
+global our_code_starts_here
+our_code_starts_here:
+  mov rax, 7
+add rax, 1
+  ret
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % ./test/add1.run   
+8
+
+
+
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % cat test/negate.snek
+(negate 4)%                                                                                                 
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % make test/negate.run
+cargo run -- test/negate.snek test/negate.s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running `target/debug/adder test/negate.snek test/negate.s`
+nasm -f macho64 test/negate.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc --target x86_64-apple-darwin -L runtime/ runtime/start.rs -o test/negate.run
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % cat test/negate.s   
+
+section .text
+global our_code_starts_here
+our_code_starts_here:
+  mov rax, 4
+neg rax
+  ret
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % ./test/negate.run   
+-4
+
+
+
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % cat test/nested_negate.snek
+(negate (negate 16))%                                                                                       
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % make test/nested_negate.run
+cargo run -- test/nested_negate.snek test/nested_negate.s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running `target/debug/adder test/nested_negate.snek test/nested_negate.s`
+nasm -f macho64 test/nested_negate.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc --target x86_64-apple-darwin -L runtime/ runtime/start.rs -o test/nested_negate.run
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % cat test/nested_negate.s   
+
+section .text
+global our_code_starts_here
+our_code_starts_here:
+  mov rax, 16
+neg rax
+neg rax
+  ret
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % ./test/nested_negate.run   
+16
+
+
+
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % cat test/negate_add1.snek  
+(negate (add1 17))%                                                                                         
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % make test/negate_add1.run  
+cargo run -- test/negate_add1.snek test/negate_add1.s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running `target/debug/adder test/negate_add1.snek test/negate_add1.s`
+nasm -f macho64 test/negate_add1.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc --target x86_64-apple-darwin -L runtime/ runtime/start.rs -o test/negate_add1.run
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % cat test/negate_add1.s   
+
+section .text
+global our_code_starts_here
+our_code_starts_here:
+  mov rax, 17
+add rax, 1
+neg rax
+  ret
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % ./test/negate_add1.run   
+-18
+
+
+
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % cat test/complex.snek    
+(sub1 (negate (add1 1)))%                                                                                   
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % make test/complex.run    
+cargo run -- test/complex.snek test/complex.s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running `target/debug/adder test/complex.snek test/complex.s`
+nasm -f macho64 test/complex.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc --target x86_64-apple-darwin -L runtime/ runtime/start.rs -o test/complex.run
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % cat test/complex.s    
+
+section .text
+global our_code_starts_here
+our_code_starts_here:
+  mov rax, 1
+add rax, 1
+neg rax
+sub rax, 1
+  ret
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % ./test/complex.run    
+-3
+
+
+
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % cat test/sub1_negate.snek
+(sub1 (negate 12))%                                                                                         
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % make test/sub1_negate.run
+cargo run -- test/sub1_negate.snek test/sub1_negate.s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.03s
+     Running `target/debug/adder test/sub1_negate.snek test/sub1_negate.s`
+nasm -f macho64 test/sub1_negate.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc --target x86_64-apple-darwin -L runtime/ runtime/start.rs -o test/sub1_negate.run
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % cat test/sub1_negate.s   
+
+section .text
+global our_code_starts_here
+our_code_starts_here:
+  mov rax, 12
+neg rax
+sub rax, 1
+  ret
+ikechukwumgbemele@Ikechukwus-MacBook-Air adder % ./test/sub1_negate.run   
+-13
