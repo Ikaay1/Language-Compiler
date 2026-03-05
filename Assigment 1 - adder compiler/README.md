@@ -1,4 +1,4 @@
-# Snek Compiler (Adder)
+# Adder Compiler (Assignment 1)
 
 A small-scale compiler that translates S-expression-based mathematics (`.snek` files) into x86_64 assembly for macOS. This project demonstrates the fundamentals of parsing, code generation, and linking against a Rust runtime.
 

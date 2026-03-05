@@ -1,0 +1,57 @@
+ikechukwumgbemele@Ikechukwus-MacBook-Air boa compiler % cargo build
+cargo test
+    Updating crates.io index
+     Locking 8 packages to latest compatible versions
+  Downloaded version_check v0.9.5
+  Downloaded typenum v1.19.0
+  Downloaded rand_xoshiro v0.6.0
+  Downloaded sized-chunks v0.6.5
+  Downloaded bitmaps v2.1.0
+  Downloaded rand_core v0.6.4
+  Downloaded im v15.1.0
+  Downloaded 7 crates (302.0KiB) in 0.29s
+   Compiling typenum v1.19.0
+   Compiling version_check v0.9.5
+   Compiling rand_core v0.6.4
+   Compiling sexp v1.1.4
+   Compiling rand_xoshiro v0.6.0
+   Compiling im v15.1.0
+   Compiling bitmaps v2.1.0
+   Compiling sized-chunks v0.6.5
+   Compiling boa v0.1.0 (/Users/ikechukwumgbemele/Documents/Programming Languages/boa compiler)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4.58s
+   Compiling boa v0.1.0 (/Users/ikechukwumgbemele/Documents/Programming Languages/boa compiler)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.33s
+     Running unittests src/main.rs (target/debug/deps/boa-428cd563ded70e00)
+
+running 9 tests
+test tests::test_compile_number ... ok
+test tests::test_parse_add1 ... ok
+test tests::test_parse_binary_plus ... ok
+test tests::test_parse_identifier ... ok
+test tests::test_parse_let_multiple_bindings ... ok
+test tests::test_parse_let_simple ... ok
+test tests::test_duplicate_binding - should panic ... ok
+test tests::test_parse_number ... ok
+test tests::test_unbound_variable - should panic ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+ikechukwumgbemele@Ikechukwus-MacBook-Air boa compiler % cargo run -- test/simple.snek test/simple.s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running `target/debug/boa test/simple.snek test/simple.s`
+ikechukwumgbemele@Ikechukwus-MacBook-Air boa compiler % cargo run -- test/add.snek test/add.s
+cargo run -- test/binop.snek test/binop.s
+cargo run -- test/let_simple.snek test/let_simple.s
+cargo run -- test/let_multi.snek test/let_multi.s
+cargo run -- test/nested.snek test/nested.s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
+     Running `target/debug/boa test/add.snek test/add.s`
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running `target/debug/boa test/binop.snek test/binop.s`
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
+     Running `target/debug/boa test/let_simple.snek test/let_simple.s`
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
+     Running `target/debug/boa test/let_multi.snek test/let_multi.s`
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
+     Running `target/debug/boa test/nested.snek test/nested.s`
