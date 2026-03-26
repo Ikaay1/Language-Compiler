@@ -1,0 +1,7 @@
+(let ((x 0))
+  (block
+    (loop
+      (if (= x 3)
+          (break x)
+          (set! x (+ x 1))))
+    x))

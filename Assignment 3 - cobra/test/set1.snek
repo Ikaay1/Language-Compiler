@@ -1,0 +1,4 @@
+(let ((x 5))
+  (block
+    (set! x 9)
+    x))
