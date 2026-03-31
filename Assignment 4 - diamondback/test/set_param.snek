@@ -1,0 +1,7 @@
+(
+  (fun (f x)
+    (block
+      (set! x (+ x 2))
+      x))
+  (f 5)
+)

@@ -1,0 +1,5 @@
+(
+  (fun (inc x) (add1 x))
+  (fun (twice_inc x) (inc (inc x)))
+  (twice_inc 8)
+)

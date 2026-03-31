@@ -1,0 +1,4 @@
+(
+  (fun (always_true) true)
+  (always_true)
+)

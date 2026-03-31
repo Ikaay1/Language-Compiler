@@ -1,0 +1,7 @@
+(
+  (fun (f x)
+    (block
+      (print x)
+      (+ x 1)))
+  (f 9)
+)

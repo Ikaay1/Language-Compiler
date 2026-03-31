@@ -1,0 +1,11 @@
+(
+  (fun (even n)
+    (if (= n 0)
+        true
+        (odd (sub1 n))))
+  (fun (odd n)
+    (if (= n 0)
+        false
+        (even (sub1 n))))
+  (odd 7)
+)

@@ -1,0 +1,5 @@
+(
+  (fun (double x) (+ x x))
+  (fun (quad x) (double (double x)))
+  (quad 5)
+)

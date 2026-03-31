@@ -1,0 +1,6 @@
+(
+  (fun (f x) (+ x 1))
+  (fun (g x) (f (f x)))
+  (fun (h x) (g (f x)))
+  (h 10)
+)

@@ -1,0 +1,5 @@
+(
+  (fun (add3 x y z) (+ (+ x y) z))
+  (fun (useit a b) (add3 a b 10))
+  (useit 4 5)
+)

@@ -1,0 +1,4 @@
+(
+  (fun (id x) (print x))
+  (id 7)
+)
