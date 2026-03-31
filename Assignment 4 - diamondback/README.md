@@ -267,4 +267,4 @@ test/              — example programs
 
 ## Summary
 
-This project extends Cobra into a full Diamondback compiler supporting user-defined functions, stack-frame management, argument passing, recursion, and runtime error/print support — the first version with full structured programs and reusable functions.
+This project extends Cobra into a full Diamondback compiler supporting user-defined functions, stack-frame management, argument passing, recursion, and runtime error/print support, the first version with full structured programs and reusable functions.
